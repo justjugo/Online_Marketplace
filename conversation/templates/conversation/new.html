@@ -1,0 +1,48 @@
+{% extends "core/base.html" %}
+
+{% block title %} new conversation | {{item.name}} {{item.created_by}} {% endblock  %}
+
+{% block core %}
+
+
+
+<!-- component -->
+<!-- This is an example component -->
+<div class="">
+    <div class='flex max-w-xl my-10 bg-white shadow-md rounded-lg overflow-hidden mx-auto'>
+        <div class='flex items-center w-full'>
+            <div class='w-full'>
+                <div class="flex flex-row mt-2 px-2 py-3 mx-3">
+                  
+                    <div class="flex flex-col mb-2 ml-4 mt-1">
+                        <div class='text-gray-600 text-sm font-semibold'>{{item.created_by}}</div>
+                        <div class='flex w-full mt-1'>
+                            <div class=' font-base text-xs mr-1'>
+                               {{item.name}}
+                            </div> 
+                            <div class='text-gray-400 font-thin text-xs'>
+                                • {{item.created_at}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-b border-gray-100"></div> 
+                
+                <form method="POST" action="." class="relative flex items-center self-center w-full max-w-xl p-4 overflow-hidden text-gray-600 focus-within:text-gray-400">
+                    {% csrf_token%}
+                    <span class="absolute inset-y-0 right-0 flex items-center pr-6">
+                        
+                    </span>
+                    {{form.body}}
+                    <button type="submit" class="p-1 focus:outline-none focus:shadow-none hover:text-blue-500">
+                        Send
+
+                        </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+{% endblock  %}

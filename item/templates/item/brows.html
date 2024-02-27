@@ -1,0 +1,46 @@
+{% extends "core/base.html" %}
+
+{% block title %} Browser {% endblock  %}
+
+
+{% block core %}
+
+    <div class="pb-6 grid grid-cols-4 gap-4 bg-gray-50">
+        <div class="col-span-1">
+            <form method="get" action="{% url 'item:browser' %}">
+                
+                    <input name="query" class="w-full py-4 px-6 border rounded-xl" type="text" value="{{query}}" placeholder="Find Somthing !">
+                    <button class="w-full py-4 px-6 border rounded-xl text-gray-900 bg-white  border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Search</button>
+                
+            </form>
+        </div>
+
+        <div class="col-span-3">
+            <div class="grid-cols-2 sm:grid md:grid-cols-2 ">
+                {% for item in items  %}
+                <div class="mx-3 mt-4 relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-96">
+                    <div class="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white bg-clip-border rounded-xl h-96">
+                        <a href="{% url 'item:detail' item.id %}">
+                        <img
+                        src="{{item.image.url}}"
+                        alt="card-image" class="object-cover w-full h-full" />
+                        </a>
+                    </div>
+                    <div class="p-6">
+                      <div class="flex items-center justify-between mb-2">
+                        <p class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
+                          {{item.name}}
+                        </p>
+                        <p class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
+                          ${{item.price}}
+                        </p>
+                      </div>
+                     
+                    </div>
+                    
+                  </div>
+        {% endfor %}            
+        </div>
+    </div>       
+</div>
+{% endblock%}

@@ -1,0 +1,37 @@
+{% extends "core/base.html" %}
+
+{% block core %}
+
+  
+<br>
+  <h3 class="text-center text-3xl font-semibold text-gray-800 ">{{category.name}}</h3>
+<br>
+  <div class="grid-cols-2 sm:grid md:grid-cols-3 ">
+    {% for item in items  %}
+    <div class="mx-3 mt-4 relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-96">
+        <div class="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white bg-clip-border rounded-xl h-96">
+            <a href="{% url 'item:detail' item.id %}">
+            <img
+            src="{{item.image.url}}"
+            alt="card-image" class="object-cover w-full h-full" />
+            </a>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-2">
+            <p class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
+              {{item.name}}
+            </p>
+            <p class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
+              ${{item.price}}
+            </p>
+          </div>
+         
+        </div>
+        
+      </div>
+      
+        
+      {% endfor %} 
+    </div>
+
+{% endblock  %}

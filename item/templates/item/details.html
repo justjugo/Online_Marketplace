@@ -1,0 +1,75 @@
+{% extends "core/base.html" %}
+
+{% block title %} {{item.name}} {% endblock  %}
+
+{% block core %}
+<h3 class="text-center text-3xl font-semibold text-gray-800 ">Details </h3>
+<br>
+<div class="min-h-screen flex items-center justify-center bg-white ">
+    <div class="max-w-4xl bg-white shadow-md md:flex rounded-lg overflow-hidden">
+      <!-- Text Section -->
+      <div class="md:w-1/2 p-6">
+        <h2 class="text-3xl font-semibold text-gray-800 mb-4">{{item.name}}</h2>
+        <p class="text-gray-800 leading-relaxed"><strong class="text-gray-500">{{item.description}}</strong></p>
+        <br>
+        <p class="text-gray-600 leading-relaxed"><strong>Date</strong> : {{item.created_at}}</p>
+        <br>
+        <p class="text-gray-600 leading-relaxed"><strong>Seller</strong> : {{item.created_by}}</p>
+        <br>
+        <p class="text-gray-600 leading-relaxed"><strong>For {{item.price}} $</strong></p>
+        <br>
+        {% if item.created_by == request.user %}
+          <div class="p-6">
+
+            <a href="{% url 'item:delete' item.id %}" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">Delete</a>
+            <a href="{% url 'item:edititem' item.id%}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Edit</a>
+
+          </div>
+        {%else%}
+          <a href="{% url 'conversation:new' item.id %}" class="inline-block bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded shadow-md">
+            Contact Seller
+          </a>
+          
+        {% endif %}
+        
+          
+          
+      </div>
+      <!-- Image Section -->
+      <div class="md:w-1/2">
+        <img class="object-cover w-full h-full" src="{{item.image.url}}" alt="Placeholder Image">
+      </div>
+    </div>
+  </div>
+  
+<br>
+  <h3 class="text-center text-3xl font-semibold text-gray-800 ">Related Items</h3>
+<br>
+  <div class="grid-cols-2 sm:grid md:grid-cols-3 ">
+    {% for item in related_item  %}
+    <div class="mx-3 mt-4 relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-96">
+        <div class="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white bg-clip-border rounded-xl h-96">
+            <a href="{% url 'item:detail' item.id %}">
+            <img
+            src="{{item.image.url}}"
+            alt="card-image" class="object-cover w-full h-full" />
+            </a>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-2">
+            <p class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
+              {{item.name}}
+            </p>
+            <p class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
+              ${{item.price}}
+            </p>
+          </div>
+         
+        </div>
+        
+      </div>
+       
+   
+    {% endfor %}
+  </div>
+{% endblock  %}

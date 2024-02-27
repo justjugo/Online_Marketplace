@@ -1,0 +1,64 @@
+{% extends "core/base.html" %}
+
+{%block title%} Welcome  {%endblock %}
+
+{% block core %}
+<h3 class="text-center text-3xl font-semibold text-gray-800 ">New Items</h3>
+
+<br><br>
+
+  <div class="  grid-cols-2 sm:grid md:grid-cols-3 ">
+    {% for item in items  %}
+    <div class="mx-3 mt-4 relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-96">
+        <div class="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white bg-clip-border rounded-xl h-96">
+            <a href="{% url 'item:detail' item.id %}">
+            <img
+            src="{{item.image.url}}"
+            alt="card-image" class="object-cover w-full h-full" />
+            </a>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-2">
+            <p class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
+              {{item.name}}
+            </p>
+            <p class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
+              ${{item.price}}
+            </p>
+          </div>
+         
+        </div>
+        
+      </div>
+      
+       
+    {% endfor %}
+  </div>
+<br><br>
+
+
+<h3 class="text-center text-3xl font-semibold text-gray-800 ">Categories</h3>
+<div class="grid-cols-1 sm:grid md:grid-cols-3 ">
+    {% for category in categories  %}
+   
+    <div
+    class="mx-3 mt-6 flex flex-col self-start rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 sm:shrink-0 sm:grow sm:basis-0">
+    
+    <div class="p-6">
+      <h5
+        class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+        <a href="{% url 'item:categorie' category.id %}">{{category.name}}</a>
+      </h5>
+      <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+       <strong>{{category.items.count}} Items</strong>
+      </p>
+    </div>
+  </div>
+    {% endfor %}
+  </div> 
+
+{% endblock %}
+
+
+
+<!-- TW Elements is free under AGPL, with commercial license required for specific uses. See more details: https://tw-elements.com/license/ and contact us for queries at tailwind@mdbootstrap.com --> 

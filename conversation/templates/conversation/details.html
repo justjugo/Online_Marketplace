@@ -1,0 +1,130 @@
+{% extends "core/base.html" %}
+
+{% block core %}
+ 
+<!-- component -->
+<!-- This is an example component -->
+<div class="container mx-auto shadow-lg rounded-lg">
+    <!-- headaer -->
+<div class="px-5 py-5 flex justify-between items-center bg-white border-b-2">
+  <div class="font-semibold text-2xl">InBox</div>
+  
+  <div
+    class="h-auto w-auto p-2 bg-yellow-500 rounded-full text-white font-semibold flex items-center justify-center"
+  >
+    {{request.user}}
+  </div>
+</div>
+<!-- end header -->
+<!-- Chatting -->
+<div class="flex flex-row justify-between bg-white">
+  <!-- chat list -->
+  <div class="flex flex-col w-2/5 border-r-2 overflow-y-auto">
+    <!-- search compt -->
+    <form method="get" action="{% url 'conversation:inbox' %}"  class="border-b-2 py-4 px-2">
+      <input
+        value="{{query}}"
+        name="query"
+        type="text"
+        placeholder="search chatting"
+        class="py-2 px-2 border-2 border-gray-200 rounded-2xl w-full"
+      />
+    </form>
+    <!-- end search compt -->
+    <!-- user list -->
+    
+   {% for con  in conversations  %}
+    
+   <div
+      class="flex flex-row py-4 px-2 justify-center items-center border-b-2"
+    >
+      
+      <div class="overflow-y-auto w-full">
+        <div class="overflow-y-auto text-lg font-semibold">
+            {% for member in con.members.all  %}
+
+            {% if member != request.user %}
+            <a href="{% url 'conversation:details' con.id %}">{{member.username}} | {{con.item.name}}</a>
+
+              
+            {% endif %}
+            
+            {% endfor %}
+
+        </div>
+        
+      </div>
+    </div>
+     
+   {% endfor %}
+    <!-- end user list -->
+  </div>
+  <!-- end chat list -->
+  <!-- message -->
+ 
+    
+ 
+  <div class="w-full px-auto flex flex-col justify-between">
+   
+    <div class="overflow-y-auto flex-col mt-5">
+        {% for message in conversation.conversation.all  %}
+        <div class=' opacity-0 hover:opacity-100 flex {% if message.created_by == request.user  %}
+        justify-end
+       {%else%} justify-start{% endif %}text-gray-400 font-thin text-xs'>
+          {{conversation.created_at}} <p> </p>
+          </div>
+      <div class="flex {% if message.created_by == request.user  %}
+       justify-end
+      {%else%} justify-start{% endif %} mb-4">
+        
+        <div
+          class="  {% if message.created_by == request.user  %}
+          mr-2 bg-blue-400
+          {%else%}ml-2 bg-gray-400
+          {% endif %}  py-2 px-4  rounded-bl-3xl rounded-tl-3xl rounded-tr-xl text-white"
+        >
+          {{message.body}}
+          
+       </div>
+       
+       
+        
+      </div>
+     
+      {% endfor %}
+    </div>
+      
+   
+    <form method="post" accept="." class="relative flex items-center self-center w-full max-w-xl p-4 overflow-hidden text-gray-600 focus-within:text-gray-400">
+        {% csrf_token%}
+        {{form.body}}
+      <button type="submit" class="p-1 focus:outline-none focus:shadow-none hover:text-blue-500">
+        Send
+      </button>
+    </form>
+  </div>
+  <!-- end message -->
+  <div class="w-2/5 border-l-2 px-5">
+    <div class="flex flex-col">
+        <br>
+        <div
+    class="h-auto w-auto p-2 bg-yellow-500 rounded-full text-white font-semibold flex items-center justify-center"
+  >
+    <h4>Seller : </h4>{{conversation.item.created_by}}
+  </div>
+      <div class="font-semibold text-xl py-4">{{conversation.item.name}}</div>
+      <img
+        src="{{conversation.item.image.url}}"
+        class="object-cover rounded-xl h-64"
+        alt=""
+      />
+      <div class="font-semibold py-4">{{conversation.item.created_at}}</div>
+      
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+{% endblock  %}
