@@ -8,7 +8,7 @@ class SigninForm(AuthenticationForm):
                                                     {
                                                         
                                                         'name':"username",
-                                                        'class':"bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
+                                                        'class':"w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm",
                                                         'placeholder':"Your name",
                                                         'required':""
                                                     }))
@@ -17,7 +17,7 @@ class SigninForm(AuthenticationForm):
                                                     {
                                                         
                                                         'name':"password2",
-                                                        'class':"bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
+                                                        'class':"w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm",
                                                         'placeholder':"••••••••",
                                                         'required':""
                                                     }))
@@ -34,7 +34,7 @@ class SignupForm(UserCreationForm):
                                                     {
                                                         
                                                         'name':"username",
-                                                        'class':"bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
+                                                        'class':"w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm",
                                                         'placeholder':"Your name",
                                                         'required':""
                                                     }))
@@ -43,7 +43,7 @@ class SignupForm(UserCreationForm):
                                                     {
                                                         
                                                         'name':"email",
-                                                        'class':"bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
+                                                        'class':"w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm",
                                                         'placeholder':"Exemple@gmail.com",
                                                         'required':""
                                                     }))
@@ -52,7 +52,7 @@ class SignupForm(UserCreationForm):
                                                     {
                                                         
                                                         'name':"password1",
-                                                        'class':"bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
+                                                        'class':"w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm",
                                                         'placeholder':"••••••••",
                                                         'required':""
                                                     }))
@@ -61,7 +61,7 @@ class SignupForm(UserCreationForm):
                                                     {
                                                         
                                                         'name':"password2",
-                                                        'class':"bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
+                                                        'class':"w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm",
                                                         'placeholder':"••••••••",
                                                         'required':""
                                                     }))

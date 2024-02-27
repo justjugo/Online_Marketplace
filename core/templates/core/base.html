@@ -24,8 +24,8 @@
             {% if request.user.is_authenticated %}
             <a href="{%url 'item:newitem' %}" class="text-gray-800 hover:text-teal-500 transition duration-300"><strong>New Item</strong></a>
             <a href="{% url 'item:browser' %}" class="text-gray-800 hover:text-teal-500 transition duration-300"><strong>Browse</strong></a>
-            <a href="{% url 'conversation:inbox' %}" class="px-4 py-2 text-white bg-sky-300 hover:bg-sky-600 rounded-md transition duration-300">Inbox</a>
-            <a href="{%url 'dashboard:index'%}" class="px-4 py-2 text-white bg-cyan-300 hover:bg-cyan-600 rounded-md transition duration-300">Dashbord</a>
+            <a href="{% url 'conversation:inbox' %}" class="px-4 py-2 text-white bg-indigo-600 hover:bg-indigo-800 rounded-md transition duration-300">Inbox</a>
+            <a href="{%url 'dashboard:index'%}" class="px-4 py-2 text-white bg-sky-600 hover:bg-sky-800 rounded-md transition duration-300">Dashbord</a>
 
             {% else %}
            
